@@ -25,7 +25,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.databinding.MovieListItemBinding
 import com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragment
-import com.mohamedzamel.movies.features.movieDetails.ui.ShowMovieDetailsFragmentDirections
+import com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragmentDirections
+
 import com.mohamedzamel.movies.shared.database.entities.Movie
 
 /**
@@ -53,8 +54,8 @@ class MoviesAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallb
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-                binding.movie?.let { plant ->
-                    navigateToMovieDetails(plant, it)
+                binding.movie?.let { movie ->
+                    navigateToMovieDetails(movie, it)
                 }
             }
         }
@@ -64,7 +65,8 @@ class MoviesAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallb
             view: View
         ) {
             val direction =
-                ShowMovieDetailsFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(
+
+                MovieListFragmentDirections.actionShowMovieListFragmentToShowMovieDetailsFragment(
                     movie
                 )
 

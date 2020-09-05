@@ -2,4 +2,5 @@
 
     <dimen name="side_margin">16dp</dimen>
     <dimen name="header_margin">16dp</dimen>
+    <dimen name="Flicker_item_image_height">100dp</dimen>
 </resources>

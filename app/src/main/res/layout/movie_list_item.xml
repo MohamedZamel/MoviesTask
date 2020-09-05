@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/side_margin"
         android:layout_marginTop="@dimen/header_margin"
-
+        android:onClick="@{clickListener}"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
 

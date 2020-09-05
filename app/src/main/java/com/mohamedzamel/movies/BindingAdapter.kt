@@ -1,6 +1,9 @@
 package com.mohamedzamel.movies
 
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.textview.MaterialTextView
 import com.mohamedzamel.movies.shared.toHandyString
 
@@ -14,3 +17,12 @@ fun bindSpannableText(textView: MaterialTextView, string: List<String>) {
     textView.text = text
 }
 
+@BindingAdapter("imageFromUrl")
+fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
+    if (!imageUrl.isNullOrEmpty()) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(view)
+    }
+}

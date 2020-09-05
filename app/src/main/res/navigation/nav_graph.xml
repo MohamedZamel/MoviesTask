@@ -12,16 +12,17 @@
         tools:layout="@layout/fragment_show_movies_list">
 
 
-        <action
-            android:id="@+id/action_movie_details_fragment_to_movie_list_fragment"
-            app:destination="@id/showMovieDetailsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="movie"
             app:argType="com.mohamedzamel.movies.shared.database.entities.Movie" />
+        <action
+            android:id="@+id/action_showMovieListFragment_to_showMovieDetailsFragment"
+            app:destination="@id/showMovieDetailsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -30,8 +31,8 @@
         android:label="@string/movie_details_label"
         tools:layout="@layout/fragment_show_movie_details">
 
-        <action
-            android:id="@+id/action_movie_list_fragment_to_movie_details_fragment"
-            app:destination="@id/showMovieListFragment" />
+        <argument
+            android:name="movie"
+            app:argType="com.mohamedzamel.movies.shared.database.entities.Movie" />
     </fragment>
 </navigation>
