@@ -16,6 +16,6 @@ class Converters {
     //region from string obj to string list
     @TypeConverter
     fun jsonToList(value: String) = Gson().fromJson(value, Array<String>::class.java).toList()
-//endregion
+    //endregion
 
 }

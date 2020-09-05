@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/showMovieListFragment">
+
+    <fragment
+        android:id="@+id/showMovieListFragment"
+        android:name="com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragment"
+        android:label="@string/movies_label"
+        tools:layout="@layout/fragment_show_movies_list">
+
+
+        <action
+            android:id="@+id/action_movie_details_fragment_to_movie_list_fragment"
+            app:destination="@id/showMovieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="movie"
+            app:argType="com.mohamedzamel.movies.shared.database.entities.Movie" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/showMovieDetailsFragment"
+        android:name="com.mohamedzamel.movies.features.movieDetails.ui.ShowMovieDetailsFragment"
+        android:label="@string/movie_details_label"
+        tools:layout="@layout/fragment_show_movie_details">
+
+        <action
+            android:id="@+id/action_movie_list_fragment_to_movie_details_fragment"
+            app:destination="@id/showMovieListFragment" />
+    </fragment>
+</navigation>

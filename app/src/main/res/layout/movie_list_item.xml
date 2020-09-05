@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="movie"
+            type="com.mohamedzamel.movies.shared.database.entities.Movie" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/side_margin"
+        android:layout_marginTop="@dimen/header_margin"
+
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:paddingTop="@dimen/header_margin">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/side_margin"
+
+                android:maxLines="2"
+                android:text="@{movie.title}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/yearTV"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/side_margin"
+                android:text="@{String.valueOf(movie.year)}"
+
+                app:layout_constraintEnd_toStartOf="@+id/ratingRateBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTV"
+                tools:text="2009" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/castTV"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:maxLines="2"
+                app:layout_constraintEnd_toEndOf="parent"
+
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingRateBar"
+                app:spannableText="@{movie.cast}" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/genresTV"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/side_margin"
+
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="start"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/castTV"
+                app:spannableText="@{movie.genres}"
+                tools:text="genrs" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/ratingRateBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="@{movie.rating}"
+
+                android:stepSize="1"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTV"
+                tools:rating="2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

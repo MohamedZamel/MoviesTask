@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -55,6 +57,8 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -77,10 +81,16 @@ dependencies {
 
     //region Testing core
     androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-//endregion
+    //endregion
+
+    //region material design
+    implementation "com.google.android.material:material:$materialVersion"
+    //endregion
+
 
 
 }
+
 def getFlickrAccess() {
     return project.findProperty("flicker_access_key")
 }

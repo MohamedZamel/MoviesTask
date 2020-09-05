@@ -1,6 +1,4 @@
-package com.mohamedzamel.movies.shared
-
-import com.mohamedzamel.movies.shared.database.MovieDao
+package com.mohamedzamel.movies.shared.database
 
 
 /**
