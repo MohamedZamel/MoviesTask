@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.FragmentShowMoviesListBinding
 import com.mohamedzamel.movies.features.MoviesList.MoviesAdapter
 import com.mohamedzamel.movies.shared.InjectorUtils
-import java.util.*
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
+
 
 /**
  * A [MovieListFragment] to Show list of the movie
@@ -31,13 +34,37 @@ class MovieListFragment : Fragment() {
         val binding = FragmentShowMoviesListBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
-        val adapter = MoviesAdapter()
-        binding.moviesList.adapter = adapter
-        subscribeUi(adapter)
 
+        showBaseMovieList(binding)
+        attachSearchViewListener(binding)
         setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    private fun attachSearchViewListener(binding: FragmentShowMoviesListBinding) {
+
+        binding.movieSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    searchMovieWithQuery(binding.moviesList, it)
+                }
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    if (newText.isNotEmpty()) {
+                        searchMovieWithQuery(binding.moviesList, newText)
+                    } else {
+                        showBaseMovieList(binding)
+                    }
+                }
+                return false
+            }
+
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,29 +80,36 @@ class MovieListFragment : Fragment() {
         }
     }
 
-    private fun subscribeUi(adapter: MoviesAdapter) {
+    /**
+     * show base movie list when when needed
+     */
+    private fun showBaseMovieList(binding: FragmentShowMoviesListBinding) {
+        val adapter = MoviesAdapter()
+        binding.moviesList.adapter = adapter
         viewModel.movies.observe(viewLifecycleOwner) { plants ->
             adapter.submitList(plants)
         }
-        Log.d("timeZamel", "subscribeUi t1: ${Calendar.getInstance().timeInMillis}")
-        viewModel.moviesRepository.getTopFiveMoviesByYear("a").observe(viewLifecycleOwner) {
-            Log.d("timeZamel", "subscribeUi: ${it.size}")
-            Log.d("timeZamel", "subscribeUi t2 : ${Calendar.getInstance().timeInMillis}")
-
-        }
-        Log.d("timeZamel", "subscribeUi: years ${Calendar.getInstance().timeInMillis}}")
-
-        viewModel.moviesRepository.getYears().observe(viewLifecycleOwner) {
-            Log.d("timeZamel", "subscribeUi: ${it.size}")
-
-            it.forEachIndexed { index, year ->
-                viewModel.moviesRepository.getTopFiveMoviesByYearAndTitle(year, "a")
-                    .observe(viewLifecycleOwner,
-                        androidx.lifecycle.Observer {
-                            Log.d("timeZamel", "subscribeUi: t$index  y$year ${it.size}")
-                        })
-            }
-        }
     }
+    //region search handle
+    /**
+     * search takes recycleview to show the result and the string query
+     *
+     */
+    private fun searchMovieWithQuery(recyclerView: RecyclerView, text: String) {
+
+        viewModel.searchedMovies.observe(viewLifecycleOwner, {
+            val sectionAdapter = SectionedRecyclerViewAdapter()
+
+            Log.d("zamel jj", "searchMovieWithQuery: ${it.entries.size}")
+            it.forEach { row ->
+
+                sectionAdapter.addSection(YearsSection(row.value, row.key.toString(), recyclerView))
+            }
+            recyclerView.adapter = sectionAdapter
+        })
+        viewModel.getTopFiveMoviesByYearAndTitle(this, text)
+
+    }
+    //endregion
 
 }

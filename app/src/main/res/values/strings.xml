@@ -10,4 +10,5 @@
     <string name="movie_details_label">Movie Details</string>
     <string name="search_image_result">Searched Image Result</string>
     <string name="movies_title_toolbar">Movies</string>
+    <string name="queryHint">Looking for spacifc movie</string>
 </resources>

@@ -8,20 +8,39 @@
         android:layout_height="match_parent"
         tools:context=".features.MoviesList.ui.MovieListActivity">
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/movieSearchView"
+            style="@style/AppTheme.SearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="16dp"
+
+            android:backgroundTintMode="src_over"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:queryHint="@string/queryHint" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movies_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:clipToPadding="false"
-
             android:paddingTop="@dimen/header_margin"
 
-            android:paddingEnd="@dimen/side_margin"
+            android:paddingBottom="@dimen/header_margin"
 
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/movieSearchView"
             app:spanCount="@integer/grid_columns"
 
             tools:listitem="@layout/movie_list_item" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
