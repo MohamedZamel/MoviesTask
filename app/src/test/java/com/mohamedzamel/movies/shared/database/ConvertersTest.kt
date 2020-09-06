@@ -7,7 +7,7 @@ import org.junit.Before
 import org.junit.Test
 
 class ExtTest {
-    lateinit var movie: Movie
+    private lateinit var movie: Movie
 
     @Before
     fun setUp() {

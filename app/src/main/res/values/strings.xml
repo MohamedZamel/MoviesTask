@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Movies</string>
-    <string name="title_activity_show_movie_list">Movie Details</string>
-
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
 
     <string name="movies_label">movies</string>

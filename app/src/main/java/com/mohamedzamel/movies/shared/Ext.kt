@@ -5,9 +5,7 @@ package com.mohamedzamel.movies.shared
  */
 fun List<String>.toHandyString(): String {
 
-  val text = this.toString().removePrefix("[").removeSuffix("]")
-
-  return text
+    return toString().removePrefix("[").removeSuffix("]")
 }
 
 

@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
+
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.FragmentShowMovieDetailsBinding
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.FlickrGalleryAdapter
@@ -21,7 +22,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /**
- * A [MovieDetailsFragment] to Show details of the movie
+ * A [ShowMovieDetailsFragment] to Show details of the movie
  */
 class ShowMovieDetailsFragment : Fragment() {
     private val adapter = FlickrGalleryAdapter()
@@ -36,7 +37,9 @@ class ShowMovieDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentShowMovieDetailsBinding.inflate(inflater, container, false)
-        lookup(args.movie.title)
+        if (viewModel.hasValidFlickerKey()) {
+            lookup(args.movie.title)
+        }
         setupUi(binding)
         return binding.root
     }
@@ -75,6 +78,7 @@ class ShowMovieDetailsFragment : Fragment() {
         searchPicturesJob?.cancel()
         searchPicturesJob = lifecycleScope.launch {
             viewModel.searchForPhotos(queryText).collectLatest {
+
                 adapter.submitData(it)
             }
         }

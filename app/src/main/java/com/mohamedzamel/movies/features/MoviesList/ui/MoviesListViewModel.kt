@@ -11,7 +11,7 @@ import java.util.*
 class MoviesListViewModel(private var moviesRepository: MoviesRepository) : ViewModel() {
 
     val movies: LiveData<List<Movie>> = moviesRepository.getMovies()
-    var tempHashMap = TreeMap<Int, List<Movie>>()
+    private var tempHashMap = TreeMap<Int, List<Movie>>()
     val years: LiveData<List<Int>> = moviesRepository.getYears()
 
     /**

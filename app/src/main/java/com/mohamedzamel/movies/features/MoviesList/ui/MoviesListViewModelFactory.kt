@@ -8,7 +8,7 @@ import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
  * Factory for creating a [MoviesListViewModel] with a constructor that takes a [MoviesRepository]
  *
  */
-class MoviesListViewModelFactory(var moviesRepository: MoviesRepository) :
+class MoviesListViewModelFactory(private var moviesRepository: MoviesRepository) :
     ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")

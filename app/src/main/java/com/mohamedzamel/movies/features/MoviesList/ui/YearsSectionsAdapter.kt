@@ -14,13 +14,13 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.Section
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters
 
 
-class YearsSection(list: List<Movie>, val header: String, val parent: ViewGroup) : Section(
+class YearsSection(list: List<Movie>, private val header: String, val parent: ViewGroup) : Section(
     SectionParameters.builder()
         .itemResourceId(R.layout.search_movies_section_list_item)
         .headerResourceId(R.layout.search_movies_header_list_item)
         .build()
 ) {
-    var itemList = list
+    private var itemList = list
     override fun getContentItemsTotal(): Int {
         return itemList.size // number of items of this section
     }

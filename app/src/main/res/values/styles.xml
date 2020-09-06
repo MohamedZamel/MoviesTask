@@ -22,10 +22,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 
-    <style name="TextAppearance.AppTheme.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
     <style name="AppTheme.SearchView" parent="Widget.AppCompat.SearchView">
         <!-- Query Text Color -->
         <item name="android:textColorPrimary">@color/colorPrimary</item>

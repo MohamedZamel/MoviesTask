@@ -8,7 +8,7 @@ import com.mohamedzamel.movies.features.movieDetails.flickrGallary.data.FlickerR
  * Factory for creating a [MovieDetailsViewModel] with a constructor that takes a [flickerRepository]
  *
  */
-class MoviesDetailsViewModelFactory(var flickerRepository: FlickerRepository) :
+class MoviesDetailsViewModelFactory(private var flickerRepository: FlickerRepository) :
     ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")

@@ -10,7 +10,7 @@ class Converters {
 
     //region string list to string obj
     @TypeConverter
-    fun listToJson(value: List<String>?) = Gson().toJson(value)
+    fun listToJson(value: List<String>): String = Gson().toJson(value)
     //endregion
 
     //region from string obj to string list

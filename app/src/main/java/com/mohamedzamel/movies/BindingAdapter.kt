@@ -19,7 +19,7 @@ fun bindSpannableText(textView: MaterialTextView, string: List<String>) {
 }
 
 /**
- * load image from Url into the requested [ImgaeView] with loading progressbar and load [R.drawable.mtrl_ic_error]
+ * load image from Url into the requested [ImgaeView] with loading progressbar and load [R.drawable.ic_baseline_error_outline_24]
  */
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {

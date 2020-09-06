@@ -10,8 +10,9 @@
             type="com.mohamedzamel.movies.shared.database.entities.Movie" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.mohamedzamel.movies.shared.utils.ui.progressiveLayouts.ProgressConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/mainLayout"
         android:layout_height="match_parent">
 
         <include
@@ -42,5 +43,5 @@
             app:spanCount="@integer/grid_columns"
             tools:listitem="@layout/flicker_gallery_list_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.mohamedzamel.movies.shared.utils.ui.progressiveLayouts.ProgressConstraintLayout>
 </layout>

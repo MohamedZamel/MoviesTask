@@ -35,4 +35,3 @@ val testMovies = arrayListOf(
         2002
     )
 )
-val testMovie = testMovies[0]

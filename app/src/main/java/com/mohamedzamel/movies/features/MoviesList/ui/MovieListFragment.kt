@@ -33,6 +33,8 @@ class MovieListFragment : Fragment() {
         val binding = FragmentShowMoviesListBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
+
+
         showBaseMovieList(binding)
         attachSearchViewListener(binding)
         setHasOptionsMenu(true)
@@ -81,10 +83,12 @@ class MovieListFragment : Fragment() {
      * show base movie list when when needed
      */
     private fun showBaseMovieList(binding: FragmentShowMoviesListBinding) {
+        binding.mainLayout.showLoading()
         val adapter = MoviesAdapter()
         binding.moviesList.adapter = adapter
         viewModel.movies.observe(viewLifecycleOwner) { movies ->
             adapter.submitList(movies)
+            binding.mainLayout.showContent()
         }
     }
     //region search handle
