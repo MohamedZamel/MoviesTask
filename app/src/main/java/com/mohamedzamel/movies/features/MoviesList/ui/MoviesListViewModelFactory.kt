@@ -2,7 +2,7 @@ package com.mohamedzamel.movies.features.MoviesList.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mohamedzamel.movies.shared.database.MoviesRepository
+import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
 
 /**
  * Factory for creating a [MoviesListViewModel] with a constructor that takes a [MoviesRepository]

@@ -2,12 +2,12 @@ package com.mohamedzamel.movies.shared
 
 import android.content.Context
 import androidx.fragment.app.Fragment
+import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
 import com.mohamedzamel.movies.features.MoviesList.ui.MoviesListViewModelFactory
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.api.FlickrService
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.data.FlickerRepository
 import com.mohamedzamel.movies.features.movieDetails.ui.MoviesDetailsViewModelFactory
 import com.mohamedzamel.movies.shared.database.AppDb
-import com.mohamedzamel.movies.shared.database.MoviesRepository
 
 object InjectorUtils {
 

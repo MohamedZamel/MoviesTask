@@ -14,7 +14,9 @@ class MovieListActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         setupNavHost()
 
+
     }
+
 
     private fun setupNavHost() {
         val navController = this.findNavController(R.id.nav_host_fragment)

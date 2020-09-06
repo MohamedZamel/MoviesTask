@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mohamedzamel.movies.shared.database.MoviesRepository
+import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
 import com.mohamedzamel.movies.shared.database.entities.Movie
 import java.util.*
 
@@ -16,6 +16,7 @@ class MoviesListViewModel(private var moviesRepository: MoviesRepository) : View
 
     /**
      * Make years query to get them then pass every on of it to another query to get result
+     * I made it into view model because i was thinking to list of years as a tags
      */
     fun getTopFiveMoviesByYearAndTitle(lifecycleOwner: LifecycleOwner, query: String) {
         years.observe(lifecycleOwner, { it ->

@@ -13,7 +13,7 @@ class FlickerRepository(var service: FlickrService) {
 
 
     /*
-    get search result function
+    get search result function as flow with paging
      */
     fun getSearchResultStream(queryText: String): Flow<PagingData<FlickerSearchPhotosRespose.Photos.Photo>> {
 

@@ -12,7 +12,7 @@ class MovieDetailsViewModel internal constructor(private var flickerRepository: 
     private var currentQueryText: String? = null
     private var currentSearchResult: Flow<PagingData<FlickerSearchPhotosRespose.Photos.Photo>>? =
         null
-
+//get photos from api
     fun searchForPhotos(queryText: String): Flow<PagingData<FlickerSearchPhotosRespose.Photos.Photo>> {
         currentQueryText = queryText
         val newPhotos: Flow<PagingData<FlickerSearchPhotosRespose.Photos.Photo>> =

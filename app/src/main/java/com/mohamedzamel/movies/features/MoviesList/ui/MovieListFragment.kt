@@ -30,10 +30,8 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val binding = FragmentShowMoviesListBinding.inflate(inflater, container, false)
         context ?: return binding.root
-
 
         showBaseMovieList(binding)
         attachSearchViewListener(binding)
@@ -43,13 +41,11 @@ class MovieListFragment : Fragment() {
     }
 
     private fun attachSearchViewListener(binding: FragmentShowMoviesListBinding) {
-
         binding.movieSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     searchMovieWithQuery(binding.moviesList, it)
                 }
-
                 return false
             }
 
@@ -63,7 +59,6 @@ class MovieListFragment : Fragment() {
                 }
                 return false
             }
-
         })
     }
 
@@ -72,11 +67,13 @@ class MovieListFragment : Fragment() {
         setupToolbar()
     }
 
+    /**
+     * setup toolbar
+     */
     private fun setupToolbar() {
         (requireActivity() as AppCompatActivity).supportActionBar?.let {
             it.title = getString(R.string.movies_title_toolbar)
             it.setDisplayHomeAsUpEnabled(false)
-
         }
     }
 
@@ -86,14 +83,14 @@ class MovieListFragment : Fragment() {
     private fun showBaseMovieList(binding: FragmentShowMoviesListBinding) {
         val adapter = MoviesAdapter()
         binding.moviesList.adapter = adapter
-        viewModel.movies.observe(viewLifecycleOwner) { plants ->
-            adapter.submitList(plants)
+        viewModel.movies.observe(viewLifecycleOwner) { movies ->
+            adapter.submitList(movies)
         }
     }
     //region search handle
+
     /**
-     * search takes recycleview to show the result and the string query
-     *
+     * search takes [RecyclerView] to show the result and the string query
      */
     private fun searchMovieWithQuery(recyclerView: RecyclerView, text: String) {
 
@@ -111,5 +108,6 @@ class MovieListFragment : Fragment() {
 
     }
     //endregion
+
 
 }

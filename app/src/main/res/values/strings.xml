@@ -11,4 +11,10 @@
     <string name="search_image_result">Searched Image Result</string>
     <string name="movies_title_toolbar">Movies</string>
     <string name="queryHint">Looking for spacifc movie</string>
+
+    <!--     progress strings -->
+    <string name="progressActivityErrorButton">Try Again</string>
+    <string name="progressActivityEmptyTitlePlaceholder">Nothing Here</string>
+    <string name="progressActivityEmptyContentPlaceholder">We couldn\'t find anything. Tap the button to take your first image</string>
+
 </resources>

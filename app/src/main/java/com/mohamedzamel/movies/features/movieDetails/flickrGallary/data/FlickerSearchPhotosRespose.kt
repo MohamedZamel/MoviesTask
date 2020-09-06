@@ -4,6 +4,10 @@ package com.mohamedzamel.movies.features.movieDetails.flickrGallary.data
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+
+/**
+ * Flieckr response model
+ */
 @Keep
 data class FlickerSearchPhotosRespose(
     @SerializedName("photos")
