@@ -7,7 +7,6 @@ import androidx.paging.cachedIn
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.data.FlickerRepository
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.data.FlickerSearchPhotosRespose
 import kotlinx.coroutines.flow.Flow
-
 class MovieDetailsViewModel internal constructor(private var flickerRepository: FlickerRepository) :
     ViewModel() {
     private var currentQueryText: String? = null

@@ -1,15 +1,13 @@
 <resources>
     <string name="app_name">Movies</string>
-    <string name="title_activity_show_movie_list">ShowMovieListActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="title_activity_show_movie_list">Movie Details</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
     <string name="movies_label">movies</string>
     <string name="movie_details_label">Movie Details</string>
     <string name="search_image_result">Searched Image Result</string>
+    <string name="movies_title_toolbar">Movies</string>
 </resources>
