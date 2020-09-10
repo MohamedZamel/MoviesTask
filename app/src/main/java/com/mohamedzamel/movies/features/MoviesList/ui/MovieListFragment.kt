@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.FragmentShowMoviesListBinding
 import com.mohamedzamel.movies.features.MoviesList.MoviesAdapter
+import com.mohamedzamel.movies.features.MoviesList.YearsSection
 import com.mohamedzamel.movies.shared.InjectorUtils
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
 
@@ -45,7 +45,7 @@ class MovieListFragment : Fragment() {
     private fun addLoadingObserver(binding: FragmentShowMoviesListBinding) {
         viewModel.isLoading.observe(
             viewLifecycleOwner,
-            Observer {
+            {
                 if (it) {
                     binding.mainLayout.showLoading()
                 } else {

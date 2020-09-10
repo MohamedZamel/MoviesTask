@@ -2,6 +2,7 @@ package com.mohamedzamel.movies.shared
 
 import android.content.Context
 import androidx.fragment.app.Fragment
+import com.mohamedzamel.movies.features.MoviesList.data.MoviesDataSource
 import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
 import com.mohamedzamel.movies.features.MoviesList.ui.MoviesListViewModelFactory
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.api.FlickrService
@@ -12,9 +13,9 @@ import com.mohamedzamel.movies.shared.database.AppDb
 object InjectorUtils {
 
     /**
-     * create and prepare [MoviesRepository] method
+     * create and prepare [MoviesDataSource] method
      */
-    private fun getMoviesRepository(context: Context): MoviesRepository {
+    private fun moviesDataSource(context: Context): MoviesDataSource {
         return MoviesRepository.getInstance(
             AppDb.getInstance(context.applicationContext).movieDao()
         )
@@ -24,7 +25,7 @@ object InjectorUtils {
      *  create and provide [MoviesListViewModelFactory] to needed requester
      */
     fun provideMoviesListViewModelFactory(fragment: Fragment): MoviesListViewModelFactory {
-        return MoviesListViewModelFactory(getMoviesRepository(fragment.requireContext()))
+        return MoviesListViewModelFactory(moviesDataSource(fragment.requireContext()))
     }
 
     /**

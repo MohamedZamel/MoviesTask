@@ -1,10 +1,11 @@
 package com.mohamedzamel.movies.features.MoviesList.data
 
 import androidx.lifecycle.LiveData
-import com.mohamedzamel.movies.shared.database.asFileAndMemorySearch.Movie
+import com.mohamedzamel.movies.shared.database.entities.Movie
+import java.util.TreeMap
 
 interface MoviesDataSource {
 
-    suspend fun getMovies(): LiveData<List<Movie>>
-    suspend fun getTopFiveMoviesByYearAndTitle(query: String)
+    fun getMovies(): LiveData<List<Movie>>
+    suspend fun getTopFiveMoviesByYearAndTitle(query: String): TreeMap<Int, List<Movie>>
 }

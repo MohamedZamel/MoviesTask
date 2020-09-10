@@ -1,4 +1,4 @@
-package com.mohamedzamel.movies.features.MoviesList.ui
+package com.mohamedzamel.movies.features.MoviesList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.MovieListItemBinding
-import com.mohamedzamel.movies.features.MoviesList.MoviesAdapter
 import com.mohamedzamel.movies.shared.database.entities.Movie
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters
