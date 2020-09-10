@@ -1,9 +1,12 @@
 package com.mohamedzamel.movies.features.moviesList.ui
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -33,7 +36,7 @@ class MovieListFragment : Fragment() {
         val binding = FragmentShowMoviesListBinding.inflate(inflater, container, false)
         context ?: return binding.root
         binding.mainLayout.showLoading()
-        // SearchByTitle(loadfileIntoMemory(requireActivity()), "a")
+
         addLoadingObserver(binding)
         showBaseMovieList(binding)
         attachSearchViewListener(binding)
@@ -50,6 +53,7 @@ class MovieListFragment : Fragment() {
                     binding.mainLayout.showLoading()
                 } else {
                     binding.mainLayout.showContent()
+                    showKeyboard(binding.movieSearchView, requireActivity())
                 }
             }
         )
@@ -107,7 +111,6 @@ class MovieListFragment : Fragment() {
             binding.mainLayout.showContent()
         }
     }
-    //region search handle
 
     /**
      * search takes [RecyclerView] to show the result and the string query
@@ -119,18 +122,32 @@ class MovieListFragment : Fragment() {
             {
                 val sectionAdapter = SectionedRecyclerViewAdapter()
                 it.forEach { row ->
-                    sectionAdapter.addSection(
-                        YearsSection(
-                            row.value,
-                            row.key.toString(),
-                            recyclerView
+                    if (row.value.isNotEmpty()) {
+                        sectionAdapter.addSection(
+                            YearsSection(
+                                row.value,
+                                row.key.toString(),
+                                recyclerView
+                            )
                         )
-                    )
+                    }
                 }
                 recyclerView.adapter = sectionAdapter
             }
         )
         viewModel.getTopFiveMoviesByYearAndTitle(text)
     }
-    //endregion
+
+    fun showKeyboard(mEtSearch: SearchView, context: Context) {
+        mEtSearch.requestFocus()
+        val imm: InputMethodManager =
+            context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+    }
+
+    fun hideSoftKeyboard(mEtSearch: SearchView, context: Context) {
+        mEtSearch.clearFocus()
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(mEtSearch.windowToken, 0)
+    }
 }

@@ -1,7 +1,6 @@
 package com.mohamedzamel.movies.shared
 
 import android.content.Context
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.mohamedzamel.movies.BuildConfig
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.api.FlickrService
@@ -20,7 +19,6 @@ object InjectorUtils {
      * create and Choose [LocalMoviesRepository]  or [InMemoryRepo] for  [MoviesDataSource] method
      */
     private fun moviesDataSource(context: Context): MoviesDataSource {
-        Log.d("dddd", "moviesDataSource: ${BuildConfig.IS_IN_MEMORY_REPO} ")
         return if (BuildConfig.IS_IN_MEMORY_REPO.isEmpty() || BuildConfig.IS_IN_MEMORY_REPO.equals("false")) {
             LocalMoviesRepository.getInstance(
                 AppDb.getInstance(context.applicationContext).movieDao()

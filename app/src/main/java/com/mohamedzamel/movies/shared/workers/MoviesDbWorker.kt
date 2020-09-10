@@ -27,7 +27,6 @@ class MoviesDbWorker(
 //                    val moviesType = object : TypeToken<List<Movie>>() {}.type
                     val moviesJsonObj: AllMovies =
                         Gson().fromJson(jsonReader, AllMovies::class.java)
-                    Log.d(TAG, "doWork: $moviesJsonObj")
                     val database = AppDb.getInstance(applicationContext)
                     database.movieDao().insertAll(moviesJsonObj.movies)
 

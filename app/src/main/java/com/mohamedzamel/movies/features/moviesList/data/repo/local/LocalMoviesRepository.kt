@@ -1,6 +1,5 @@
 package com.mohamedzamel.movies.features.moviesList.data.repo.local
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.mohamedzamel.movies.features.moviesList.data.MoviesDataSource
@@ -38,7 +37,6 @@ class LocalMoviesRepository private constructor(private val movieDao: MovieDao) 
 
                 val searchResultTreeMap = TreeMap<Int, List<Movie>>()
                 val listOfYears = movieDao.getYears()
-                Log.d(TAG, "getTopFiveMoviesByYearAndTitle: before $query ${listOfYears.size}")
                 listOfYears.map { year ->
                     async {
                         val movieList = getTopFiveMoviesByYearAndTitle(year, query)
@@ -47,13 +45,8 @@ class LocalMoviesRepository private constructor(private val movieDao: MovieDao) 
                             key = year,
                             movieList
                         )
-                        Log.d(
-                            TAG,
-                            "getTopFiveMoviesByYearAndTitle: in every data  $year $query ${movieList.size}"
-                        )
                     }
                 }.awaitAll()
-                Log.d(TAG, "getTopFiveMoviesByYearAndTitle: before return $searchResultTreeMap")
                 searchResultTreeMap
             }
         }
