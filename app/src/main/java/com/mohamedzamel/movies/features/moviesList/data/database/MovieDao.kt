@@ -1,4 +1,4 @@
-package com.mohamedzamel.movies.shared.database
+package com.mohamedzamel.movies.features.moviesList.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RawQuery
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 
 /**
  * Data access object for Movie app

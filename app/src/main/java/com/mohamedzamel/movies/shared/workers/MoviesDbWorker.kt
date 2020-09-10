@@ -6,9 +6,9 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
+import com.mohamedzamel.movies.features.moviesList.data.database.AppDb
+import com.mohamedzamel.movies.features.moviesList.data.entities.AllMovies
 import com.mohamedzamel.movies.shared.Constants.MOVIES_DATA_FILENAME
-import com.mohamedzamel.movies.shared.database.AppDb
-import com.mohamedzamel.movies.shared.database.entities.AllMovies
 import kotlinx.coroutines.coroutineScope
 
 /**

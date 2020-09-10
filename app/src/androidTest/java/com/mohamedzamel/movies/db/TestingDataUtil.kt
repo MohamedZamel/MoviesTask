@@ -1,6 +1,6 @@
 package com.mohamedzamel.movies.db
 
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 
 /**
  * [Movie] objects used for tests.

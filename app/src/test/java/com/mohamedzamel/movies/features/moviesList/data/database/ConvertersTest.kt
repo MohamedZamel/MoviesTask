@@ -1,6 +1,6 @@
-package com.mohamedzamel.movies.shared.database
+package com.mohamedzamel.movies.features.moviesList.data.database
 
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 import com.mohamedzamel.movies.shared.toHandyString
 import org.junit.Assert.assertEquals
 import org.junit.Before

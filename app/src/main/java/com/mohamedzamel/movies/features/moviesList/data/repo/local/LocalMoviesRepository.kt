@@ -1,10 +1,11 @@
-package com.mohamedzamel.movies.features.MoviesList.data
+package com.mohamedzamel.movies.features.moviesList.data.repo.local
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.mohamedzamel.movies.shared.database.MovieDao
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.MoviesDataSource
+import com.mohamedzamel.movies.features.moviesList.data.database.MovieDao
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -13,10 +14,10 @@ import kotlinx.coroutines.withContext
 import java.util.TreeMap
 
 /**
- * [MoviesRepository] for handling movie data operations  as singleton object
+ * [LocalMoviesRepository] for handling movie data operations  as singleton object
  */
-class MoviesRepository private constructor(private val movieDao: MovieDao) : MoviesDataSource {
-    val TAG = MoviesRepository::javaClass.name
+class LocalMoviesRepository private constructor(private val movieDao: MovieDao) : MoviesDataSource {
+    val TAG = LocalMoviesRepository::javaClass.name
 
     // retrieve all movies from db
     override fun getMovies() = movieDao.getMovies()
@@ -72,11 +73,11 @@ class MoviesRepository private constructor(private val movieDao: MovieDao) : Mov
 
         // For Singleton instantiation
         @Volatile
-        private var instance: MoviesRepository? = null
+        private var instance: LocalMoviesRepository? = null
 
         fun getInstance(movieDao: MovieDao) =
             instance ?: synchronized(this) {
-                instance ?: MoviesRepository(movieDao).also { instance = it }
+                instance ?: LocalMoviesRepository(movieDao).also { instance = it }
             }
     }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mohamedzamel.movies.features.MoviesList
+package com.mohamedzamel.movies.features.moviesList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -24,9 +24,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.databinding.MovieListItemBinding
-import com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragment
-import com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragmentDirections
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.ui.MovieListFragment
+import com.mohamedzamel.movies.features.moviesList.ui.MovieListFragmentDirections
 
 /**
  * Adapter for the [RecyclerView] in [MovieListFragment].

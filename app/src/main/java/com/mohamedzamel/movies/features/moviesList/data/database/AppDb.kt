@@ -1,4 +1,4 @@
-package com.mohamedzamel.movies.shared.database
+package com.mohamedzamel.movies.features.moviesList.data.database
 
 import android.content.Context
 import androidx.room.Database
@@ -8,8 +8,8 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 import com.mohamedzamel.movies.shared.Constants.DATABASE_NAME
-import com.mohamedzamel.movies.shared.database.entities.Movie
 import com.mohamedzamel.movies.shared.workers.MoviesDbWorker
 
 /**

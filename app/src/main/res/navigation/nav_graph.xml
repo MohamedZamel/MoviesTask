@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/showMovieListFragment"
-        android:name="com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragment"
+        android:name="com.mohamedzamel.movies.features.moviesList.ui.MovieListFragment"
         android:label="@string/movies_label"
         tools:layout="@layout/fragment_show_movies_list">
 
 
         <argument
             android:name="movie"
-            app:argType="com.mohamedzamel.movies.shared.database.entities.Movie" />
+            app:argType="com.mohamedzamel.movies.features.moviesList.data.entities.Movie" />
         <action
             android:id="@+id/action_showMovieListFragment_to_showMovieDetailsFragment"
             app:destination="@id/showMovieDetailsFragment"
@@ -32,6 +32,6 @@
 
         <argument
             android:name="movie"
-            app:argType="com.mohamedzamel.movies.shared.database.entities.Movie" />
+            app:argType="com.mohamedzamel.movies.features.moviesList.data.entities.Movie" />
     </fragment>
 </navigation>

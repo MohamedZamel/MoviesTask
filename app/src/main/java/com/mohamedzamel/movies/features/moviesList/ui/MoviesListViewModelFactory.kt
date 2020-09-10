@@ -1,12 +1,12 @@
-package com.mohamedzamel.movies.features.MoviesList.ui
+package com.mohamedzamel.movies.features.moviesList.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mohamedzamel.movies.features.MoviesList.data.MoviesDataSource
-import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
+import com.mohamedzamel.movies.features.moviesList.data.MoviesDataSource
+import com.mohamedzamel.movies.features.moviesList.data.repo.local.LocalMoviesRepository
 
 /**
- * Factory for creating a [MoviesListViewModel] with a constructor that takes a [MoviesRepository]
+ * Factory for creating a [MoviesListViewModel] with a constructor that takes a [LocalMoviesRepository]
  *
  */
 class MoviesListViewModelFactory(private var moviesRepository: MoviesDataSource) :

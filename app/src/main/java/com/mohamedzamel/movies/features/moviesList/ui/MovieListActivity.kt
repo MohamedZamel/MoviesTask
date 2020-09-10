@@ -1,4 +1,4 @@
-package com.mohamedzamel.movies.features.MoviesList.ui
+package com.mohamedzamel.movies.features.moviesList.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

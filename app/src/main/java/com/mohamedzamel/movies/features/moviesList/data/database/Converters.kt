@@ -1,4 +1,4 @@
-package com.mohamedzamel.movies.shared.database
+package com.mohamedzamel.movies.features.moviesList.data.database
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

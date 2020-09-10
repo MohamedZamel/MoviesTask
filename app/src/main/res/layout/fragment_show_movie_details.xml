@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.mohamedzamel.movies.shared.database.entities.Movie" />
+            type="com.mohamedzamel.movies.features.moviesList.data.entities.Movie" />
     </data>
 
     <com.mohamedzamel.movies.shared.utils.ui.progressiveLayouts.ProgressConstraintLayout

@@ -1,4 +1,4 @@
-package com.mohamedzamel.movies.features.MoviesList.ui
+package com.mohamedzamel.movies.features.moviesList.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.FragmentShowMoviesListBinding
-import com.mohamedzamel.movies.features.MoviesList.MoviesAdapter
-import com.mohamedzamel.movies.features.MoviesList.YearsSection
+import com.mohamedzamel.movies.features.moviesList.MoviesAdapter
+import com.mohamedzamel.movies.features.moviesList.YearsSection
 import com.mohamedzamel.movies.shared.InjectorUtils
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
 

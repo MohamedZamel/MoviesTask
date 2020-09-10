@@ -1,7 +1,7 @@
-package com.mohamedzamel.movies.features.MoviesList.data
+package com.mohamedzamel.movies.features.moviesList.data
 
 import androidx.lifecycle.LiveData
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 import java.util.TreeMap
 
 interface MoviesDataSource {

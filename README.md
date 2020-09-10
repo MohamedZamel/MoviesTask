@@ -10,6 +10,18 @@ There are two Gradle tasks for testing the project:
 * `connectedAndroidTest` - for running Espresso on a connected device
 * `test` - for running unit tests
 
+### inMemoryRepo OR LocalMovieRepo
+
+I have made 2 approach of searching for Movie one of them is based on Database Queries [LocalMovieRepo] and another on is based on memory search [inMemoryRepo ]
+I will provide more details later on the benchmark of the 2 solutions 
+
+to use inMemoryRepo just add this line to the `gradle.properties` file, either in your user home
+directory (usually `~/.gradle/gradle.properties` on Linux and Mac) or in the project's root folder:
+
+```
+is_in_memory_repo=true
+```
+
 ### Flickr API key
 
 Movies App uses the [FLICKER API](https://www.flickr.com/services/api/flickr.photos.search.html) to load pictures Movie details Screen . To use the API, you will need to obtain a developer Access key. See the

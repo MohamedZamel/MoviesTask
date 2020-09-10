@@ -25,6 +25,9 @@ android {
 
         // Consult the README on instructions for setting up Flickr API key
         buildConfigField("String", "FLICKR_ACCESS_KEY", "\"" + getFlickrAccess() + "\"")
+        // Consult the README on instructions for setting up Flickr API key
+        buildConfigField("String", "IS_IN_MEMORY_REPO", "\"" + isInMemoryRepo() + "\"")
+
     }
 
     buildTypes {
@@ -116,4 +119,7 @@ dependencies {
 
 def getFlickrAccess() {
     return project.findProperty("flicker_access_key")
+}
+def isInMemoryRepo() {
+    return project.findProperty("is_in_memory_repo")
 }

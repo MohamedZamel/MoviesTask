@@ -3,8 +3,8 @@ package com.mohamedzamel.movies.db
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
-import com.mohamedzamel.movies.shared.database.AppDb
-import com.mohamedzamel.movies.shared.database.MovieDao
+import com.mohamedzamel.movies.features.moviesList.data.database.AppDb
+import com.mohamedzamel.movies.features.moviesList.data.database.MovieDao
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers
 import org.junit.After

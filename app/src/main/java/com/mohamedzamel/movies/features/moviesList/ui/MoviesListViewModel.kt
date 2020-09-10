@@ -1,11 +1,11 @@
-package com.mohamedzamel.movies.features.MoviesList.ui
+package com.mohamedzamel.movies.features.moviesList.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mohamedzamel.movies.features.MoviesList.data.MoviesDataSource
-import com.mohamedzamel.movies.shared.database.entities.Movie
+import com.mohamedzamel.movies.features.moviesList.data.MoviesDataSource
+import com.mohamedzamel.movies.features.moviesList.data.entities.Movie
 import kotlinx.coroutines.launch
 import java.util.TreeMap
 
