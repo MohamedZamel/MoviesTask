@@ -1,6 +1,5 @@
 package com.mohamedzamel.movies.features.movieDetails.flickrGallary.api
 
-
 import com.mohamedzamel.movies.BuildConfig
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.data.FlickerSearchPhotosRespose
 import okhttp3.OkHttpClient
@@ -25,7 +24,6 @@ interface FlickrService {
         @Query("format") format: String = "json",
         @Query("api_key") apiKey: String = BuildConfig.FLICKR_ACCESS_KEY
     ): FlickerSearchPhotosRespose
-
 
     companion object {
         private const val BASE_URL = "https://www.flickr.com/"

@@ -13,7 +13,6 @@ import com.mohamedzamel.movies.features.movieDetails.flickrGallary.data.FlickerS
 class FlickrGalleryAdapter :
     PagingDataAdapter<Photo, FlickrGalleryAdapter.FlickrGalleryViewHolder>(FlickrGalleryDiffCallback()) {
 
-
     class FlickrGalleryViewHolder(
         private val binding: FlickerGalleryListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -47,12 +46,13 @@ class FlickrGalleryAdapter :
             FlickerGalleryListItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
-                ), parent, false
+                ),
+                parent,
+                false
             )
         )
     }
 }
-
 
 private class FlickrGalleryDiffCallback : DiffUtil.ItemCallback<Photo>() {
     override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {

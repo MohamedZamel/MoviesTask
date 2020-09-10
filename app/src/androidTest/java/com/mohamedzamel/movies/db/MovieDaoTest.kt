@@ -7,7 +7,11 @@ import com.mohamedzamel.movies.shared.database.AppDb
 import com.mohamedzamel.movies.shared.database.MovieDao
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers
-import org.junit.*
+import org.junit.After
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
 class MovieDaoTest {
     private lateinit var db: AppDb
@@ -23,20 +27,15 @@ class MovieDaoTest {
         movieDaoTest = db.movieDao()
 
         db.movieDao().insertAll(testMovies)
-
     }
-
 
     @After
     fun closeDb() {
         db.close()
     }
 
-
     @Test
     fun testGetMovies() = runBlocking {
         Assert.assertThat(getValue(movieDaoTest.getMovies()).size, Matchers.equalTo(4))
-
-
     }
 }

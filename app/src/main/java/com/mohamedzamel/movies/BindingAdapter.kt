@@ -8,7 +8,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.textview.MaterialTextView
 import com.mohamedzamel.movies.shared.toHandyString
 
-
 /**
  *adding bindingAdapter to [MaterialTextView] to allow it to use
  */
@@ -19,7 +18,7 @@ fun bindSpannableText(textView: MaterialTextView, string: List<String>) {
 }
 
 /**
- * load image from Url into the requested [ImgaeView] with loading progressbar and load [R.drawable.ic_baseline_error_outline_24]
+ * load image from Url into the requested [ImageView] with loading progressbar and load [R.drawable.ic_baseline_error_outline_24]
  */
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {

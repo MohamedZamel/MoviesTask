@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mohamedzamel.movies.features.MoviesList.data.MoviesRepository
 import com.mohamedzamel.movies.shared.database.entities.Movie
-import java.util.*
+import java.util.TreeMap
 
 class MoviesListViewModel(private var moviesRepository: MoviesRepository) : ViewModel() {
 
@@ -19,19 +19,25 @@ class MoviesListViewModel(private var moviesRepository: MoviesRepository) : View
      * I made it into view model because i was thinking to list of years as a tags
      */
     fun getTopFiveMoviesByYearAndTitle(lifecycleOwner: LifecycleOwner, query: String) {
-        years.observe(lifecycleOwner, { it ->
-            val totalYears = it.size
-            it.forEachIndexed { index, currentYear ->
-                val result = moviesRepository.getTopFiveMoviesByYearAndTitle(currentYear, query)
-                result.observe(lifecycleOwner, {
-                    tempHashMap.set(currentYear, it)
-                    if (index == (totalYears.minus(1))) {
-                        _searchedMovies.value = tempHashMap
-                        tempHashMap = TreeMap<Int, List<Movie>>()
-                    }
-                })
+        years.observe(
+            lifecycleOwner,
+            { it ->
+                val totalYears = it.size
+                it.forEachIndexed { index, currentYear ->
+                    val result = moviesRepository.getTopFiveMoviesByYearAndTitle(currentYear, query)
+                    result.observe(
+                        lifecycleOwner,
+                        {
+                            tempHashMap.set(currentYear, it)
+                            if (index == (totalYears.minus(1))) {
+                                _searchedMovies.value = tempHashMap
+                                tempHashMap = TreeMap<Int, List<Movie>>()
+                            }
+                        }
+                    )
+                }
             }
-        })
+        )
     }
 
     /**
@@ -46,6 +52,4 @@ class MoviesListViewModel(private var moviesRepository: MoviesRepository) : View
     val _searchedMovies = MutableLiveData<TreeMap<Int, List<Movie>>>()
 
     val searchedMovies: LiveData<TreeMap<Int, List<Movie>>> = _searchedMovies
-
-
 }

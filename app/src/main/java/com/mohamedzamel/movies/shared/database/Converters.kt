@@ -17,5 +17,4 @@ class Converters {
     @TypeConverter
     fun jsonToList(value: String) = Gson().fromJson(value, Array<String>::class.java).toList()
     //endregion
-
 }

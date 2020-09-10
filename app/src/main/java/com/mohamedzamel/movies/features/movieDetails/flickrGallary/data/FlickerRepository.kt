@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
  */
 class FlickerRepository(var service: FlickrService) {
 
-
     /*
     get search result function as flow with paging
      */

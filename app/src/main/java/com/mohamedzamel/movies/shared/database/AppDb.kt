@@ -12,7 +12,6 @@ import com.mohamedzamel.movies.shared.Constants.DATABASE_NAME
 import com.mohamedzamel.movies.shared.database.entities.Movie
 import com.mohamedzamel.movies.shared.workers.MoviesDbWorker
 
-
 /**
  * Room Db for the whole app
  **/

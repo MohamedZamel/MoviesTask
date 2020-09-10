@@ -1,6 +1,5 @@
 package com.mohamedzamel.movies.shared.database.entities
 
-
 import android.os.Parcelable
 import androidx.annotation.Keep
 import androidx.room.ColumnInfo

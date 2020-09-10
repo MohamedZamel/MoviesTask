@@ -1,6 +1,5 @@
 package com.mohamedzamel.movies.features.MoviesList.ui
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.mohamedzamel.movies.features.MoviesList.MoviesAdapter
 import com.mohamedzamel.movies.shared.database.entities.Movie
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters
-
 
 class YearsSection(list: List<Movie>, private val header: String, val parent: ViewGroup) : Section(
     SectionParameters.builder()
@@ -27,7 +25,7 @@ class YearsSection(list: List<Movie>, private val header: String, val parent: Vi
 
     override fun getItemViewHolder(view: View?): RecyclerView.ViewHolder {
         /**
-        return [MoviesAdapter.MovieViewHolder] for the items of this section
+         return [MoviesAdapter.MovieViewHolder] for the items of this section
          */
         return MoviesAdapter.MovieViewHolder(
             MovieListItemBinding.inflate(
@@ -51,12 +49,9 @@ class YearsSection(list: List<Movie>, private val header: String, val parent: Vi
     override fun onBindHeaderViewHolder(holder: RecyclerView.ViewHolder?) {
         (holder as TitleHeaderViewHolder).sectionedHeaderTv.text = header
     }
-
-
 }
 
 internal class TitleHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val sectionedHeaderTv: TextView =
         itemView.findViewById<View>(R.id.sectionedHeaderTv) as TextView
-
 }

@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
-
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.FragmentShowMovieDetailsBinding
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.FlickrGalleryAdapter
@@ -33,7 +32,8 @@ class ShowMovieDetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentShowMovieDetailsBinding.inflate(inflater, container, false)
@@ -59,8 +59,8 @@ class ShowMovieDetailsFragment : Fragment() {
         return NavigationUI.onNavDestinationSelected(
             item,
             requireView().findNavController()
-        )
-                || super.onOptionsItemSelected(item)
+        ) ||
+            super.onOptionsItemSelected(item)
     }
 
     private fun setupToolbar() {

@@ -16,7 +16,7 @@ class MovieDetailsViewModel internal constructor(private var flickerRepository: 
     private var currentSearchResult: Flow<PagingData<FlickerSearchPhotosRespose.Photos.Photo>>? =
         null
 
-    //get photos from api
+    // get photos from api
     fun searchForPhotos(queryText: String): Flow<PagingData<FlickerSearchPhotosRespose.Photos.Photo>> {
 
         currentQueryText = queryText
@@ -29,6 +29,4 @@ class MovieDetailsViewModel internal constructor(private var flickerRepository: 
     }
 
     fun hasValidFlickerKey() = (BuildConfig.FLICKR_ACCESS_KEY != "null")
-
 }
-

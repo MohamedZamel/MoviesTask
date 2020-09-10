@@ -3,7 +3,6 @@ package com.mohamedzamel.movies.features.movieDetails.flickrGallary.data
 import androidx.paging.PagingSource
 import com.mohamedzamel.movies.features.movieDetails.flickrGallary.api.FlickrService
 
-
 /**
  * constant to start paging from index 1
  */
@@ -18,7 +17,7 @@ class FlickerPagingSource(var service: FlickrService, private val queryText: Str
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FlickerSearchPhotosRespose.Photos.Photo> {
         val page = params.key ?: FLICKR_SERVICE_STARTING_PAGE_INDEX
         return try {
-            //call service with new paging params values
+            // call service with new paging params values
             val response = service.searchPhotos(queryText, page, params.loadSize)
             val photos = response.photos.photo
             LoadResult.Page(
@@ -31,5 +30,3 @@ class FlickerPagingSource(var service: FlickrService, private val queryText: Str
         }
     }
 }
-
-

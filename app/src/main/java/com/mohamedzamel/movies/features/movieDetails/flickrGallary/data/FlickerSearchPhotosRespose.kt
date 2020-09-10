@@ -1,9 +1,7 @@
 package com.mohamedzamel.movies.features.movieDetails.flickrGallary.data
 
-
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-
 
 /**
  * Flieckr response model
@@ -39,9 +37,8 @@ data class FlickerSearchPhotosRespose(
             @SerializedName("server")
             var server: String,
             @SerializedName("title")
-            var title: String,
-
-            ) {
+            var title: String
+        ) {
             fun getPhotoUrl(): String {
                 return "https://farm$farm.static.flickr.com/$server/$id".plus("_")
                     .plus("$secret.jpg")

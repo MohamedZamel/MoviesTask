@@ -16,7 +16,6 @@ import com.mohamedzamel.movies.features.MoviesList.MoviesAdapter
 import com.mohamedzamel.movies.shared.InjectorUtils
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
 
-
 /**
  * A [MovieListFragment] to Show list of the movie
  */
@@ -27,13 +26,14 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentShowMoviesListBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
-
+        // SearchByTitle(loadfileIntoMemory(requireActivity()), "a")
 
         showBaseMovieList(binding)
         attachSearchViewListener(binding)
@@ -43,25 +43,27 @@ class MovieListFragment : Fragment() {
     }
 
     private fun attachSearchViewListener(binding: FragmentShowMoviesListBinding) {
-        binding.movieSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    searchMovieWithQuery(binding.moviesList, it)
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    if (newText.isNotEmpty()) {
-                        searchMovieWithQuery(binding.moviesList, newText)
-                    } else {
-                        showBaseMovieList(binding)
+        binding.movieSearchView.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let {
+                        searchMovieWithQuery(binding.moviesList, it)
                     }
+                    return false
                 }
-                return false
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null) {
+                        if (newText.isNotEmpty()) {
+                            searchMovieWithQuery(binding.moviesList, newText)
+                        } else {
+                            showBaseMovieList(binding)
+                        }
+                    }
+                    return false
+                }
             }
-        })
+        )
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -98,20 +100,26 @@ class MovieListFragment : Fragment() {
      */
     private fun searchMovieWithQuery(recyclerView: RecyclerView, text: String) {
 
-        viewModel.searchedMovies.observe(viewLifecycleOwner, {
-            val sectionAdapter = SectionedRecyclerViewAdapter()
+        viewModel.searchedMovies.observe(
+            viewLifecycleOwner,
+            {
+                val sectionAdapter = SectionedRecyclerViewAdapter()
 
-            Log.d("zamel jj", "searchMovieWithQuery: ${it.entries.size}")
-            it.forEach { row ->
+                Log.d("zamel jj", "searchMovieWithQuery: ${it.entries.size}")
+                it.forEach { row ->
 
-                sectionAdapter.addSection(YearsSection(row.value, row.key.toString(), recyclerView))
+                    sectionAdapter.addSection(
+                        YearsSection(
+                            row.value,
+                            row.key.toString(),
+                            recyclerView
+                        )
+                    )
+                }
+                recyclerView.adapter = sectionAdapter
             }
-            recyclerView.adapter = sectionAdapter
-        })
+        )
         viewModel.getTopFiveMoviesByYearAndTitle(this, text)
-
     }
     //endregion
-
-
 }

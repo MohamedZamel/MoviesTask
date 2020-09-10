@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.databinding.MovieListItemBinding
 import com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragment
 import com.mohamedzamel.movies.features.MoviesList.ui.MovieListFragmentDirections
-
 import com.mohamedzamel.movies.shared.database.entities.Movie
 
 /**

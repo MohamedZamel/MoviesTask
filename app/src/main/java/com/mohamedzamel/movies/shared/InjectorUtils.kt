@@ -40,6 +40,4 @@ object InjectorUtils {
     fun provideMoviesDetailsViewModelFactory(): MoviesDetailsViewModelFactory {
         return MoviesDetailsViewModelFactory(getFlickerRepository())
     }
-
-
 }

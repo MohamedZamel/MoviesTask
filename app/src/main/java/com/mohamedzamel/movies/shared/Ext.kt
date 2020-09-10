@@ -7,5 +7,3 @@ fun List<String>.toHandyString(): String {
 
     return toString().removePrefix("[").removeSuffix("]")
 }
-
-
