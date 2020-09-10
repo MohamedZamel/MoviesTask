@@ -1,7 +1,6 @@
 package com.mohamedzamel.movies.features.MoviesList.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamedzamel.movies.R
 import com.mohamedzamel.movies.databinding.FragmentShowMoviesListBinding
@@ -32,14 +32,27 @@ class MovieListFragment : Fragment() {
     ): View? {
         val binding = FragmentShowMoviesListBinding.inflate(inflater, container, false)
         context ?: return binding.root
-
+        binding.mainLayout.showLoading()
         // SearchByTitle(loadfileIntoMemory(requireActivity()), "a")
-
+        addLoadingObserver(binding)
         showBaseMovieList(binding)
         attachSearchViewListener(binding)
         setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    private fun addLoadingObserver(binding: FragmentShowMoviesListBinding) {
+        viewModel.isLoading.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it) {
+                    binding.mainLayout.showLoading()
+                } else {
+                    binding.mainLayout.showContent()
+                }
+            }
+        )
     }
 
     private fun attachSearchViewListener(binding: FragmentShowMoviesListBinding) {
@@ -85,11 +98,12 @@ class MovieListFragment : Fragment() {
      * show base movie list when when needed
      */
     private fun showBaseMovieList(binding: FragmentShowMoviesListBinding) {
-        binding.mainLayout.showLoading()
+
         val adapter = MoviesAdapter()
         binding.moviesList.adapter = adapter
         viewModel.movies.observe(viewLifecycleOwner) { movies ->
             adapter.submitList(movies)
+
             binding.mainLayout.showContent()
         }
     }
@@ -104,10 +118,7 @@ class MovieListFragment : Fragment() {
             viewLifecycleOwner,
             {
                 val sectionAdapter = SectionedRecyclerViewAdapter()
-
-                Log.d("zamel jj", "searchMovieWithQuery: ${it.entries.size}")
                 it.forEach { row ->
-
                     sectionAdapter.addSection(
                         YearsSection(
                             row.value,
@@ -119,7 +130,7 @@ class MovieListFragment : Fragment() {
                 recyclerView.adapter = sectionAdapter
             }
         )
-        viewModel.getTopFiveMoviesByYearAndTitle(this, text)
+        viewModel.getTopFiveMoviesByYearAndTitle(text)
     }
     //endregion
 }

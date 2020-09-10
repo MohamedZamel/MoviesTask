@@ -21,12 +21,12 @@ interface MovieDao {
     suspend fun insertAll(movies: List<Movie>)
 
     @Query("SELECT Distinct year from movies")
-    fun getYears(): LiveData<List<Int>>
+    suspend fun getYears(): List<Int>
 
     @Query(
         "Select * From movies Where year = :year and title like :query order by rating desc limit 5"
     )
-    fun getTopFiveMoviesByYearAndTitle(year: Int, query: String): LiveData<List<Movie>>
+    fun getTopFiveMoviesByYearAndTitle(year: Int, query: String): List<Movie>
 
     /** select * from (select *,row_number() over(partition  by year order by rating desc ) as rn from movies ) where rn<=5 and  ( title like '%action%' or genres like '%action%' )
      * select distinct year from movies

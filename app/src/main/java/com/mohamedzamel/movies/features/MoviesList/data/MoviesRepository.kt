@@ -6,13 +6,13 @@ import com.mohamedzamel.movies.shared.database.MovieDao
 import com.mohamedzamel.movies.shared.database.entities.Movie
 
 /**
- * Repo for handling movie data operations  as singleton object
+ * [MoviesRepository] for handling movie data operations  as singleton object
  */
 class MoviesRepository private constructor(private val movieDao: MovieDao) {
     // retrieve all movies from db
     fun getMovies() = movieDao.getMovies()
-    fun getYears() = movieDao.getYears()
-    fun getTopFiveMoviesByYearAndTitle(year: Int, query: String): LiveData<List<Movie>> {
+    suspend fun getYears() = movieDao.getYears()
+    fun getTopFiveMoviesByYearAndTitle(year: Int, query: String): List<Movie> {
         return movieDao.getTopFiveMoviesByYearAndTitle(year, "%$query%")
     }
 
