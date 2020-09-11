@@ -18,10 +18,7 @@ class Searcher<T : YearHolder>(target: List<T>) {
     fun getTopN(n: Int, predicate: (T) -> Boolean): TreeMap<Int, List<T>> {
         val dd = TreeMap<Int, List<T>>()
 
-        groupedTarget.map {
-
-                (year, value) ->
-
+        groupedTarget.map { (year, value) ->
             val r = value.asSequence().filter(
                 predicate
             ).take(n).toList()
